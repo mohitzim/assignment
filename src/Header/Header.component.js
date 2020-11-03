@@ -17,7 +17,9 @@ class Header extends Component {
             <div style={Styles.header}>
               <div class="row">
                 <div class="col-9">
-                  <h3>Shopping Cart</h3>
+                  <h3>
+                    <NavLink to="/">Shopping Cart</NavLink>
+                  </h3>
                 </div>
                 <div class="col-3">
                   Cart

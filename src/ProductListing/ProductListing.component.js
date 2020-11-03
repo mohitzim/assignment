@@ -48,7 +48,7 @@ class ProductListing extends Component {
                   <NavLink to={"/product/"+product.id} activeClassName="activeLink">{product.title}</NavLink> 
                 </div>
                 <div class="col-3">
-                  {product.price}
+                  {product.price} USD
                 </div>
                 <div class="col-3">
                   Add
