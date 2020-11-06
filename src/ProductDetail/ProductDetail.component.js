@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import setBgAction from "../actions/setBgAction";
 import setColorAction from "../actions/setColorAction";
 import setCartCountAction from "../actions/setCartCountAction";
+import setCartProductsAction from "../actions/setCartProductsAction";
 
 class ProductDetail extends Component {
 
@@ -58,6 +59,10 @@ class ProductDetail extends Component {
     this.props.setCartCountAction(totalCartCount);
    
    
+    let currentCartProducts = this.props.cartProducts;
+    console.log('currentCartProducts :: ', currentCartProducts);
+    currentCartProducts.push(this.props.match.params.id);
+    this.props.setCartProductsAction(currentCartProducts);
     this.props.setBgAction("blue");
   }
 
@@ -117,7 +122,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setBgAction: (payload) => dispatch(setBgAction(payload)),
   setColorAction: (payload) => dispatch(setColorAction(payload)),
-  setCartCountAction: (payload) => dispatch(setCartCountAction(payload))
+  setCartCountAction: (payload) => dispatch(setCartCountAction(payload)),
+  setCartProductsAction: (payload) => dispatch(setCartProductsAction(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

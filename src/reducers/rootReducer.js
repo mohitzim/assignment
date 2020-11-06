@@ -14,7 +14,12 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         cartCount: action.payload
-      };  
+      };
+    case "cartProductAdd":
+      return {
+        ...state,
+        cartProducts: action.payload
+      };    
     default:
       return state;
   }
