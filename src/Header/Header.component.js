@@ -24,7 +24,7 @@ class Header extends Component {
                   </h3>
                 </div>
                 <div class="col-3">
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  <NavLink to="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></NavLink>
                   &nbsp;&nbsp;<span class="dot" style={Styles.dot}></span>
                   ***<span>{this.props.cartCount}</span>---
                 </div>
@@ -39,6 +39,6 @@ class Header extends Component {
   const mapStateToProps = state => ({
     ...state
   });
-  
+
   export default connect(mapStateToProps)(Header);
   //export default Header;

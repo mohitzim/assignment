@@ -61,7 +61,8 @@ class ProductDetail extends Component {
    
     let currentCartProducts = this.props.cartProducts;
     console.log('currentCartProducts :: ', currentCartProducts);
-    currentCartProducts.push(this.props.match.params.id);
+    let objCartProd = { "id": this.props.match.params.id, "qty": this.state.productQty, "price": (this.state.productDetail.price*this.state.productQty) }
+    currentCartProducts.push(objCartProd);
     this.props.setCartProductsAction(currentCartProducts);
     this.props.setBgAction("blue");
   }
@@ -96,7 +97,7 @@ class ProductDetail extends Component {
                     {productDetail.description}
                   </div>
                   <div style={{paddingTop:'20px'}}>
-    ***<div>{this.props.bgColor}</div>---
+    {/* ***<div>{this.props.bgColor}</div>--- */}
                     <button type="button" onClick={()=>{this.addToCart()}}>Add to Cart</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" name="txtQty" id="txtQty" style={{width: '200px'}} value={productQty} onChange={(e)=>{this.changeInp(e)}} ></input>

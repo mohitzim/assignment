@@ -3,6 +3,7 @@ import Header from './Header/Header.component'
 import Banner from './Banner/Banner.component'
 import ProductListing from './ProductListing/ProductListing.component'
 import ProductDetail from './ProductDetail/ProductDetail.component'
+import Cart from './Cart/Cart.component'
 import './App.css';
 import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom'
 
@@ -18,6 +19,7 @@ function App() {
 
         <Route exact path="/" component={Banner} />
         <Route exact path="/products" component={ProductListing} />
+        <Route exact path="/cart" component={Cart} />
         <Route path="/product/:id" component={ProductDetail} />
       </div>
     </Router>
