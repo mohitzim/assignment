@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import Styles from './ProductDetail.style'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
+//import { browserHistory } from 'react-router'
+
+import { connect } from "react-redux";
+import setBgAction from "../actions/setBgAction";
+import setColorAction from "../actions/setColorAction";
+import setCartCountAction from "../actions/setCartCountAction";
 
 class ProductDetail extends Component {
 
@@ -10,7 +16,8 @@ class ProductDetail extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      productDetail: {}
+      productDetail: {},
+      productQty: 1
     };
   }
 
@@ -39,10 +46,30 @@ class ProductDetail extends Component {
     
   }
 
+  changeInp(ev) {
+    //console.log(ev.target.value);
+    this.setState({productQty: ev.target.value});
+  }
+
+  addToCart() {
+    console.log('addtocart..');
+    let currentCartCount = this.props.cartCount;
+    let totalCartCount = currentCartCount + 1;
+    this.props.setCartCountAction(totalCartCount);
+   
+   
+    this.props.setBgAction("blue");
+  }
+
+  goToProducts() {
+    console.log('products..');
+    //browserHistory.push('/products')
+  }
+  
   render() {
   
     console.log("prod-detail..")
-    const { error, isLoaded, productDetail } = this.state;
+    const { error, isLoaded, productDetail, productQty} = this.state;
 
     console.log(productDetail);
     return(
@@ -59,9 +86,19 @@ class ProductDetail extends Component {
                   <div>
                     <b>Category:</b> {productDetail.category}
                   </div>
-                  <br />
+                  <br /><br />
                   <div>
                     {productDetail.description}
+                  </div>
+                  <div style={{paddingTop:'20px'}}>
+    ***<div>{this.props.bgColor}</div>---
+                    <button type="button" onClick={()=>{this.addToCart()}}>Add to Cart</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="txtQty" id="txtQty" style={{width: '200px'}} value={productQty} onChange={(e)=>{this.changeInp(e)}} ></input>
+                  </div>
+                  <div>
+                    <Link to="/products">Browse Products</Link>
+                    {/* <button type="button" onClick={()=>{this.goToProducts()}}>Browse Products</button> */}
                   </div>
                 </div>
               </div>
@@ -73,4 +110,16 @@ class ProductDetail extends Component {
   }
 }
 
-export default ProductDetail;
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  setBgAction: (payload) => dispatch(setBgAction(payload)),
+  setColorAction: (payload) => dispatch(setColorAction(payload)),
+  setCartCountAction: (payload) => dispatch(setCartCountAction(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
+
+//export default ProductDetail;

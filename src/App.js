@@ -8,7 +8,8 @@ import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <Router forceRefresh={true}>
+    // <Router forceRefresh={true}>
+    <Router>  
       <div className="App">
         <header>
           <Header></Header>
