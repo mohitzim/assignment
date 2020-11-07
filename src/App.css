@@ -41,6 +41,10 @@
   display: none;
 }
 
+.error {
+  color: red;
+}
+
 .pad10 {
   padding: 10px;
 }

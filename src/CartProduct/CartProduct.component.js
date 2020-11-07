@@ -60,7 +60,7 @@ class CartProduct extends Component {
                 {productQty}
               </div>
               <div class="col-3">
-                {price}
+                {price} USD
               </div>  
             </div>
           </div>

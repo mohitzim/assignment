@@ -16,7 +16,7 @@ class CartTotal extends Component {
                   Total
                 </div>
                 <div class="col-3">
-                {cartTotal}
+                {cartTotal} USD
                 </div>
               </div>
             </div>  
