@@ -49,8 +49,25 @@
   padding: 10px;
 }
 
+.padTop {
+  padding-top: 10px;
+}
+
+.mrgn4 {
+  margin: 0px;
+}
+
+.productBox {
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
 .borderBtm {
   border-bottom: 1px solid #ccc;
+}
+
+.brdr {
+  border: 1px solid #ccc;
 }
 
 .msgThanks {

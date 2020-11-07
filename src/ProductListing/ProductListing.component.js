@@ -42,7 +42,24 @@ class ProductListing extends Component {
         return(
             <div style={Styles.alignLeft}>
               
-            {products.map(product => (
+              <div class="container">
+                <div class="row">
+                  {products.map(product => (
+                    <div class="col-4 padTop">
+                      <NavLink to={"/product/"+product.id} activeClassName="activeLink">
+                      <div class="productBox pad10">
+                        <div style={{textAlign:"center"}}>
+                          <img src={product.image} width="200" height="200" />
+                        </div>
+                        {product.title}
+                      </div>
+                      </NavLink>
+                    </div> 
+                  ))}
+                </div>
+              </div>
+
+            {/* {products.map(product => (
               <div class="row" key={product.id} style={Styles.listing}>
                 <div class="col-6">
                   <NavLink to={"/product/"+product.id} activeClassName="activeLink">{product.title}</NavLink> 
@@ -54,7 +71,7 @@ class ProductListing extends Component {
                   Add
                 </div>
               </div>
-            ))}
+            ))} */}
         
               
               <div class="row" style={Styles.listing}>
@@ -63,7 +80,7 @@ class ProductListing extends Component {
                 </div>
               </div>
             </div>
-          )
+      )
   }
 
 }
