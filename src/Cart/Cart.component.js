@@ -12,8 +12,11 @@ class Cart extends Component {
 
     constructor(props) {
         super(props)
+        console.log('this.props :: ',this.props);
         this.state = {
-          showCheckout: false
+          showCheckout: false,
+          checkoutCompleted: false,
+          msgThanks: ''
         }
     }
 
@@ -23,22 +26,31 @@ class Cart extends Component {
 
     completeCheckout() {
       console.log('completeCheckout..');
-      //console.log(this.props);
+      
+      // checkout completed, clear cart
+      this.props.setCartCountAction(0);
+      this.props.setCartProductsAction([]);
 
-      //this.props.setCartCountAction(0);
-      //this.props.setCartProductsAction([]);
+      this.setState({showCheckout: false, checkoutCompleted: true, msgThanks: 'Thank you for shopping.'});
     }
 
     render() {
       console.log('Cart...');
       console.log('cartProducts:: ',this.props.cartProducts)
-      let {showCheckout} = this.state;
+      let {showCheckout, checkoutCompleted, msgThanks} = this.state;
       let {cartProducts} = this.props;
       let cartTotal = 0;
 
         return(
           // <CartProduct id="1"></CartProduct>
-          <div>
+          <div class="pad10">
+            {checkoutCompleted &&
+              <div class="msgThanks pad10">
+                {msgThanks}&nbsp;&nbsp;
+                <NavLink to="/products">Browse Products</NavLink>
+              </div>
+            }
+
             <div>
               {cartProducts.map((cartProduct, index) => (
                   <div key={index}>
@@ -48,18 +60,20 @@ class Cart extends Component {
               ))}
             </div>
 
-            <div>
-              <CartTotal cartTotal={cartTotal.toFixed(2)}></CartTotal>
-            </div>
+            {!checkoutCompleted &&
+              <div>
+                <CartTotal cartTotal={cartTotal.toFixed(2)}></CartTotal>
+              </div>
+            }
 
-            {!showCheckout && 
+            {!showCheckout && !checkoutCompleted && 
               <div>
                 <button name="btnCheckout" type="button" onClick={()=>{this.showCheckout()}}>Checkout</button>
               </div>
             }  
 
             <div>
-              {showCheckout && <Checkout completeCheckout={this.completeCheckout} ></Checkout>}
+              {showCheckout && <Checkout completeCheckout={()=>{this.completeCheckout()}} ></Checkout>}
             </div>
           </div>
         )
