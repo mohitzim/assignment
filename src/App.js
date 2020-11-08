@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import Header from './Header/Header.component'
+import Footer from './Footer/Footer.component'
 import Banner from './Banner/Banner.component'
 import ProductListing from './ProductListing/ProductListing.component'
 import ProductDetail from './ProductDetail/ProductDetail.component'
@@ -16,11 +17,15 @@ function App() {
           <Header></Header>
           {/* <ProductListing></ProductListing> */}
         </header>
+        
+        <div class="content">
+          <Route exact path="/" component={Banner} />
+          <Route exact path="/products" component={ProductListing} />
+          <Route exact path="/cart" component={Cart} />
+          <Route path="/product/:id" component={ProductDetail} />
+        </div>
 
-        <Route exact path="/" component={Banner} />
-        <Route exact path="/products" component={ProductListing} />
-        <Route exact path="/cart" component={Cart} />
-        <Route path="/product/:id" component={ProductDetail} />
+        <Footer></Footer>
       </div>
     </Router>
   );

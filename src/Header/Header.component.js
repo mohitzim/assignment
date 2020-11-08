@@ -24,7 +24,7 @@ class Header extends Component {
                   </h3>
                 </div>
                 <div class="col-3">
-                  <NavLink to="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></NavLink>
+                  <NavLink to="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></NavLink>
                   &nbsp;&nbsp;<span class="dot" style={Styles.dot}></span>
                   ***<span>{this.props.cartCount}</span>---
                 </div>

@@ -16,8 +16,16 @@ class Cart extends Component {
         this.state = {
           showCheckout: false,
           checkoutCompleted: false,
+          emptyCart: false,
           msgThanks: ''
         }
+    }
+
+    componentDidMount() {
+      console.log('componentDidMount :: ', this.props.cartCount);
+      if(this.props.cartCount == 0) {
+        this.setState({emptyCart: true});
+      }
     }
 
     showCheckout() {
@@ -37,7 +45,7 @@ class Cart extends Component {
     render() {
       console.log('Cart...');
       console.log('cartProducts:: ',this.props.cartProducts)
-      let {showCheckout, checkoutCompleted, msgThanks} = this.state;
+      let {showCheckout, checkoutCompleted, emptyCart, msgThanks} = this.state;
       let {cartProducts} = this.props;
       let cartTotal = 0;
 
@@ -51,6 +59,12 @@ class Cart extends Component {
               </div>
             }
 
+            {emptyCart &&
+              <div class="text-center">
+                <h4>Cart is empty.</h4> <NavLink to="/products">Browse Products</NavLink>
+              </div>
+            }
+
             <div>
               {cartProducts.map((cartProduct, index) => (
                   <div key={index}>
@@ -60,13 +74,13 @@ class Cart extends Component {
               ))}
             </div>
 
-            {!checkoutCompleted &&
+            {!checkoutCompleted && !emptyCart &&
               <div>
                 <CartTotal cartTotal={cartTotal.toFixed(2)}></CartTotal>
               </div>
             }
 
-            {!showCheckout && !checkoutCompleted && 
+            {!showCheckout && !checkoutCompleted && !emptyCart && 
               <div>
                 <button name="btnCheckout" type="button" onClick={()=>{this.showCheckout()}}>Checkout</button>
               </div>
