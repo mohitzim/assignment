@@ -57,7 +57,7 @@ class Checkout extends Component {
 
   isValidLname() {
     if(this.state.lname === '') {
-      this.setState({errFname: "Please enter Last name."});
+      this.setState({errLname: "Please enter Last name."});
       return false;
     }
     this.setState({errLname: ''});
@@ -66,7 +66,7 @@ class Checkout extends Component {
 
   isValidPhone() {
     if(this.state.phone === '') {
-      this.setState({errFname: "Please enter Phone."});
+      this.setState({errPhone: "Please enter Phone."});
       return false;
     }
     this.setState({errPhone: ''});
@@ -74,8 +74,9 @@ class Checkout extends Component {
   }
 
   isValidCreditcard() {
-    if(this.state.creditcard === '') {
-      this.setState({errFname: "Please enter Creditcard."});
+
+    if(this.state.creditcard === '' || this.state.creditcard.match(/^4[0-9]{12}(?:[0-9]{3})?$/) == null) {
+      this.setState({errCreditcard: "Please enter valid Creditcard."});
       return false;
     }
     this.setState({errCreditcard: ''});
@@ -83,10 +84,10 @@ class Checkout extends Component {
   }
 
   handleSubmit = () => {
-    //alert(1);
+    //alert(this.isValidCreditcard());
     if(this.isValidFname() && this.isValidLname() && this.isValidPhone() && this.isValidCreditcard()) {
-      console.log(1111);
       
+      // form is valid, complete checkout
       this.props.completeCheckout();
     }
 
@@ -95,9 +96,9 @@ class Checkout extends Component {
     })
   }
     render() {
-      console.log('Checkout...');
+      //console.log('Checkout...');
         return(
-            <div className="formWrapper">checkout..
+            <div className="formWrapper">
               <div class="row pad10">
                 <div class="col-3">
                   <input type="text" value={this.state.fname} width="100%" placeholder="First Name" onChange={(e)=>{this.onChangeFname(e)}}/>
@@ -114,7 +115,8 @@ class Checkout extends Component {
                   <div class="error">{this.state.errPhone}</div>
                 </div>
                 <div class="col-3">  
-                  <input type="text" value={this.state.creditcard} placeholder="Credit Card" onChange={(e)=>{this.onChangeCreditcard(e)}}/>
+                  <input type="text" value={this.state.creditcard} placeholder="Credit Card (Visa card)" onChange={(e)=>{this.onChangeCreditcard(e)}}/>
+                  <div>(i.e., 4111111111111111)</div>
                   <div class="error">{this.state.errCreditcard}</div>
                 </div>
               </div>  

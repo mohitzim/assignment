@@ -8,11 +8,10 @@ class CartTotal extends Component {
 
     render() {
       let {cartTotal} = this.props;
-      console.log('cart-total...');
         return(
-            <div class="pad10">
+            <div class="pad10" style={{fontWeight: 'bold'}}>
               <div class="row">
-                <div class="col-9">
+                <div class="col-9" style={{textAlign:'right'}}>
                   Total
                 </div>
                 <div class="col-3">

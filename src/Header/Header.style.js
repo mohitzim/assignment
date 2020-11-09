@@ -5,5 +5,5 @@ export default {
   headerContainer: {
     backgroundColor: '#f1f1f1', padding: '10px', height: '50px'
   },
-  dot: {height: '10px', width: '10px', backgroundColor: 'blue', borderRadius: '50%', display: 'inline-block'}
+  dot: {height: '24px', width: '24px', backgroundColor: 'red', borderRadius: '50%', display: 'inline-block', textAlign:'center', color: 'white'}
 }

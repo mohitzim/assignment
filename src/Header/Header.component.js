@@ -19,17 +19,17 @@ class Header extends Component {
                     <NavLink to="/">Shopping Cart</NavLink>
                   </h3>
                 </div>
-                <div class="col-3">
+                <div class="col-3" style={{textAlign:'right'}}>
                   <NavLink to="/cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></NavLink>
-                  &nbsp;&nbsp;<span class="dot" style={Styles.dot}></span>
-                  ***<span>{this.props.cartCount}</span>---
+                  &nbsp;&nbsp;
+                  {this.props.cartCount > 0 && 
+                    <span class="dot hide" style={Styles.dot}>{this.props.cartCount}</span>
+                  }
                 </div>
               </div>
             </div>
-            
           )
-    }
-
+        }
   }
   
   const mapStateToProps = state => ({

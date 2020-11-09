@@ -55,7 +55,6 @@ class Cart extends Component {
             {checkoutCompleted &&
               <div class="msgThanks pad10">
                 {msgThanks}&nbsp;&nbsp;
-                <NavLink to="/products">Browse Products</NavLink>
               </div>
             }
 
@@ -80,12 +79,19 @@ class Cart extends Component {
               </div>
             }
 
-            {!showCheckout && !checkoutCompleted && !emptyCart && 
-              <div>
-                <button name="btnCheckout" type="button" onClick={()=>{this.showCheckout()}}>Checkout</button>
+            <div class="row pad10">
+              <div class="col-6">
+                {!showCheckout && !checkoutCompleted && !emptyCart && 
+                  <button name="btnCheckout" type="button" onClick={()=>{this.showCheckout()}}>Checkout</button>  
+                }
               </div>
-            }  
-
+              <div class="col-6" style={{textAlign:'right'}}>
+                <NavLink to="/products">
+                  <button type="button" style={{backgroundColor:'blue', color: 'white', border:'none'}}>Browse Products</button>
+                </NavLink>
+              </div>
+            </div>
+            
             <div>
               {showCheckout && <Checkout completeCheckout={()=>{this.completeCheckout()}} ></Checkout>}
             </div>
