@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Styles from './ProductDetail.style'
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 //import { browserHistory } from 'react-router'
 
 import { connect } from "react-redux";
@@ -82,7 +81,7 @@ class ProductDetail extends Component {
         <div>
           <div class="row">
             <div class="col-5">
-              <img src={productDetail.image} width="100%" />
+              <img src={productDetail.image} width="100%" alt={productDetail.title} title={productDetail.title} />
             </div>
             <div class="col-7">
               <div class="row">
@@ -103,7 +102,7 @@ class ProductDetail extends Component {
                     <input type="text" name="txtQty" id="txtQty" style={{width: '200px'}} value={productQty} onChange={(e)=>{this.changeInp(e)}} ></input>
                   </div>
                   <div>
-                    <Link to="/products">Browse Products</Link>
+                    <NavLink to="/products">Browse Products</NavLink>
                     {/* <button type="button" onClick={()=>{this.goToProducts()}}>Browse Products</button> */}
                   </div>
                 </div>
@@ -112,7 +111,6 @@ class ProductDetail extends Component {
           </div>
         </div>
       )
-
   }
 }
 

@@ -9,10 +9,6 @@ class Header extends Component {
     name = 'A1';
     status = 'Online';
 
-    constructor(props) {
-        super(props)
-    }
-
     render() {
       console.log('header...');
         return(

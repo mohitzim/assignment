@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import Styles from './Checkout.style'
-import {NavLink} from 'react-router-dom'
-
-import { connect } from "react-redux";
 
 class Checkout extends Component {
 
@@ -50,38 +46,39 @@ class Checkout extends Component {
   }
 
   isValidFname() {
-    if(this.state.fname == '') {
-      this.state.errFname = "Please enter First name.";
+    if(this.state.fname === '') {
+      //this.state.errFname = "Please enter First name.";
+      this.setState({errFname: "Please enter First name."});
       return false;
     }
-    this.state.errFname = '';
+    this.setState({errFname: ''});
     return true;
   }
 
   isValidLname() {
-    if(this.state.lname == '') {
-      this.state.errLname = "Please enter Last name.";
+    if(this.state.lname === '') {
+      this.setState({errFname: "Please enter Last name."});
       return false;
     }
-    this.state.errLname = '';
+    this.setState({errLname: ''});
     return true;
   }
 
   isValidPhone() {
-    if(this.state.phone == '') {
-      this.state.errPhone = "Please enter Phone.";
+    if(this.state.phone === '') {
+      this.setState({errFname: "Please enter Phone."});
       return false;
     }
-    this.state.errPhone = '';
+    this.setState({errPhone: ''});
     return true;
   }
 
   isValidCreditcard() {
-    if(this.state.creditcard == '') {
-      this.state.errCreditcard = "Please enter Creditcard.";
+    if(this.state.creditcard === '') {
+      this.setState({errFname: "Please enter Creditcard."});
       return false;
     }
-    this.state.errCreditcard = '';
+    this.setState({errCreditcard: ''});
     return true;
   }
 

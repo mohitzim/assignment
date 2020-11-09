@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Styles from './ProductListing.style'
 import {NavLink} from 'react-router-dom'
 
 class ProductListing extends Component {
@@ -37,10 +36,9 @@ class ProductListing extends Component {
   }
 
   render() {
-    console.log('prod-lising...');
     const { error, isLoaded, products } = this.state;
         return(
-            <div style={Styles.alignLeft}>
+            <div>
               
               <div class="container">
                 <div class="row">
@@ -49,7 +47,7 @@ class ProductListing extends Component {
                       <NavLink to={"/product/"+product.id} activeClassName="activeLink">
                       <div class="productBox pad10">
                         <div style={{textAlign:"center"}}>
-                          <img src={product.image} width="200" height="200" />
+                          <img src={product.image} alt={product.title} title={product.title} width="200" height="200" />
                         </div>
                         {product.title}
                       </div>
@@ -74,7 +72,7 @@ class ProductListing extends Component {
             ))} */}
         
               
-              <div class="row" style={Styles.listing}>
+              <div class="row">
                 <div class="col-12">
                   row2
                 </div>

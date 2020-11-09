@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import Styles from './CartProduct.style'
-import {NavLink} from 'react-router-dom'
-
 import { connect } from "react-redux";
 
 class CartProduct extends Component {
@@ -43,7 +40,7 @@ class CartProduct extends Component {
     render() {
 
       console.log('CartProduct...');
-      let {productId, productQty, price} = this.props;
+      let {productQty, price} = this.props;
       const { error, isLoaded, productDetail} = this.state;
       
       return(
@@ -51,7 +48,7 @@ class CartProduct extends Component {
           <div class="pad10 borderBtm">
             <div class="row">
               <div class="col-2">
-                <img src={productDetail.image} width="50%" />
+                <img src={productDetail.image} width="50%" alt={productDetail.title} title={productDetail.title} />
               </div>
               <div class="col-5">
                 {productDetail.title}
